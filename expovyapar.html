@@ -475,7 +475,7 @@
             Let's talk about ideas.Fill out contact form.
           </p>
 
-          <form action="" class="contact-form">
+          <form onsubmit="sendEmail(); reset(); return false;" action="" class="contact-form">
 
             <div class="input-wrapper">
               <input type="text" name="name" aria-label="name" placeholder="Your name*" required class="input-field">
@@ -618,7 +618,26 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src= "https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+      function sendEmail(){
+        Email.send({
+          SecureToken: "742be25a-31b6-4ddb-b8df-4fffe46c2788"
+  
+    To : 'expovyapar02@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "Contact Here",
+    Body : "Your name: " + document.getElementById("Your name").value
+           + "<br> Email address:" + document.getElementById("Email address").value
+           + "<br> Subject:" + document.getElementById("Subject").value
+           + "<br> Phone number:" + document.getElementById("phone number").value
+           + "<br>Your message:" + document.getElementById("Your message").value
+
+  }).then(
+  message => alert("Message sent Successfully")
+);
+      }
+    </script>
 
 </body>
-
 </html>
